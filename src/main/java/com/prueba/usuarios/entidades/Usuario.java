@@ -19,4 +19,10 @@ public class Usuario {
     private String nombre;
     private String email;
     private boolean asistio;
+
+    public Usuario(String nombre, String email, boolean asistio) {
+        this.nombre = nombre;
+        this.email = email;
+        this.asistio = asistio;
+    }
 }
