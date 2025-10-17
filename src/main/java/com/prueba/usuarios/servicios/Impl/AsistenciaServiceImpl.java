@@ -7,6 +7,7 @@ import com.prueba.usuarios.repositorios.AsistenciaRepository;
 import com.prueba.usuarios.repositorios.EventoRepository;
 import com.prueba.usuarios.repositorios.UsuarioRepository;
 import com.prueba.usuarios.servicios.AsistenciaService;
+import com.prueba.usuarios.servicios.QrCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +28,9 @@ public class AsistenciaServiceImpl implements AsistenciaService {
 
     @Autowired
     private EventoRepository eventoRepository;
+    //Para QR:
+    @Autowired
+    private QrCodeService qrCodeService;
 
     @Override
     public Asistencia crearAsistencia(Asistencia asistencia) {
@@ -90,5 +94,27 @@ public class AsistenciaServiceImpl implements AsistenciaService {
 
         // Eliminar usando el objeto en lugar del ID
         asistenciaRepository.delete(asistencia);
+    }
+
+    //Nuevos metodos para QR:
+
+    @Override
+    public Asistencia registrarAsistenciaPorQR(String codigoQr) {
+        Asistencia asistencia = asistenciaRepository.findByCodigoQr(codigoQr)
+                .orElseThrow(() -> new RuntimeException("No se encontró asistencia con el código QR: " + codigoQr));
+
+        if (asistencia.isAsistio()) {
+            throw new IllegalStateException("La asistencia ya fue registrada previamente");
+        }
+
+        asistencia.setAsistio(true);
+        asistencia.setHoraAsistencia(LocalDateTime.now());
+        return asistenciaRepository.save(asistencia);
+    }
+
+    @Override
+    public byte[] generarQRParaAsistencia(Long asistenciaId) throws Exception {
+        Asistencia asistencia = obtenerAsistenciaPorId(asistenciaId);
+        return qrCodeService.generateQRCodeImage(asistencia.getCodigoQr(), 250, 250);
     }
 }

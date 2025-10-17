@@ -12,4 +12,9 @@ public interface AsistenciaService {
     Asistencia actualizarAsistencia(Long id, Asistencia asistencia);
     Asistencia registrarAsistencia(Long id);
     void eliminarAsistencia(Long id);
+
+    // Nuevos métodos para QR
+    Asistencia registrarAsistenciaPorQR(String codigoQr);
+    byte[] generarQRParaAsistencia(Long asistenciaId) throws Exception;
+
 }

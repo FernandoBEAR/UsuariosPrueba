@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class UsuarioServiceImpl implements UsuarioService {
@@ -22,6 +24,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     public Usuario obtenerUsuarioPorId(Long id) {
         return usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado con id: " + id));
+    }
+
+    @Override
+    public List<Usuario> listarUsuarios() {
+        return usuarioRepository.findAll();
     }
 
     @Override

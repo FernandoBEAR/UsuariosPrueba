@@ -5,6 +5,8 @@ import com.prueba.usuarios.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/usuarios")
 public class UsuarioController {
@@ -15,6 +17,10 @@ public class UsuarioController {
     @PostMapping("/crear")
     public Usuario crearUsuario(@RequestBody Usuario usuario) {
         return usuarioService.crearUsuario(usuario);
+    }
+    @GetMapping("/Listar")
+    public List<Usuario> listarUsuarios() {
+        return usuarioService.listarUsuarios();
     }
     @GetMapping("/{id}")
     public Usuario obtenerUsuario(@PathVariable Long id) {
