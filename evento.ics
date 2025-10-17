@@ -3,12 +3,12 @@ PRODID:-//Eventos Facultad//iCal4j 1.0//ES
 VERSION:2.0
 CALSCALE:GREGORIAN
 BEGIN:VEVENT
-DTSTAMP:20251015T174041Z
-DTSTART:20251020T050000
-DTEND:20251020T080000
-SUMMARY:Congreso PMI prueba 
-DESCRIPTION:Evento de integración y competencias entre promociones universitarias.
-LOCATION:Auditorio Principal\, Universidad Central
-UID:8fd10553-47bf-4f0e-b18b-2847e0932367
+DTSTAMP:20251016T220953Z
+DTSTART:20251101T180000
+DTEND:20251101T200000
+SUMMARY:Link del webinar para el evento
+DESCRIPTION:Hola {nombre}\,\n\nTe invitamos a nuestro webinar exclusivo sobre las últimas tendencias en tecnología.\n\n📅 Fecha: 1 de noviembre de 2025\n🕒 Hora: 18:00 PM\n🔗 Enlace de reunión adjunto\n\n¡No te lo pierdas!\n\nSaludos\,\nEl equipo organizador
+LOCATION:Google Meet
+UID:09852313-0394-43f3-8cd7-11d9bd03190d
 END:VEVENT
 END:VCALENDAR

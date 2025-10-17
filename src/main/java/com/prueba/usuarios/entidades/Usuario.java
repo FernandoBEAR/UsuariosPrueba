@@ -1,5 +1,6 @@
 package com.prueba.usuarios.entidades;
 
+import com.prueba.usuarios.entidades.TipoAsistencia;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,10 +20,12 @@ public class Usuario {
     private String nombre;
     private String email;
     private boolean asistio;
+    private TipoAsistencia tipoAsistencia;
 
-    public Usuario(String nombre, String email, boolean asistio) {
+    public Usuario(String nombre, String email, boolean asistio, TipoAsistencia tipoAsistencia) {
         this.nombre = nombre;
         this.email = email;
         this.asistio = asistio;
+        this.tipoAsistencia = tipoAsistencia;
     }
 }
